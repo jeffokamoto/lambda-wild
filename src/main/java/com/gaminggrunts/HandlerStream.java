@@ -53,17 +53,17 @@ public class HandlerStream implements RequestStreamHandler {
     try
     {
       HashMap event = gson.fromJson(reader, HashMap.class);
-      logger.log("STREAM TYPE: " + inputStream.getClass().toString());
-      logger.log("EVENT TYPE: " + event.getClass().toString());
+      // logger.log("STREAM TYPE: " + inputStream.getClass().toString());
+      // logger.log("EVENT TYPE: " + event.getClass().toString());
 
       String body = (String) event.get("body");
-      logger.log("Body is " + body);
+      // logger.log("Body is " + body);
 
       String decodedBody = new String(Base64.decodeBase64(body), "US-ASCII");
-      logger.log("Decoded body is " + decodedBody);
+      // logger.log("Decoded body is " + decodedBody);
 
       UriParameterMap parameterMap = UriParameterMap.parse(decodedBody);
-      logger.log("Parameter map is " + parameterMap.toString());
+      // logger.log("Parameter map is " + parameterMap.toString());
 
       String text = parameterMap.getFirst("text");
       logger.log("Text from slack is " + text);
@@ -76,7 +76,6 @@ public class HandlerStream implements RequestStreamHandler {
                        + "    \"text\": \"" + reply + "\"\n"
                        + "}\n";
 
-      // writer.write(gson.toJson(event));
       writer.write(toSlack);
       if (writer.checkError())
       {
