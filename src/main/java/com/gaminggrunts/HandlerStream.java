@@ -195,41 +195,4 @@ public class HandlerStream implements RequestStreamHandler {
     return rv;
   }
 
-  public static class Die {
-    Integer sides;
-    Integer result;
-    List<String> rolls;
-    String roll;
-
-    public Die(final Integer sides) {
-      this.sides = sides;
-      this.rolls = new ArrayList<>();
-    }
-
-    public void roll() {
-      Integer n = rng.nextInt(this.sides) + 1;
-      this.result = n;
-      this.roll = Integer.toString(n);
-        this.rolls.add(Integer.toString(this.result));
-      }
-    }
-
-    public static class WildDie extends Die {
-      public WildDie(final Integer sides) {
-                                              super(sides);
-                                                           }
-
-      @Override
-      public void roll() {
-        this.result = 0;
-        Integer n = 0;
-        do {
-          n = rng.nextInt(this.sides) + 1;
-          this.result += n;
-          this.rolls.add(Integer.toString(n));
-        } while (n == this.sides);
-        this.roll = "(" + String.join(", ", this.rolls) + ")";
-      }
-    }
-
 }
