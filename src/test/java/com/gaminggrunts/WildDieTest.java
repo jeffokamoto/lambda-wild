@@ -1,7 +1,6 @@
 package com.gaminggrunts;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -11,8 +10,6 @@ import org.slf4j.LoggerFactory;
 
 class WildDieTest {
   private static final Logger logger = LoggerFactory.getLogger(WildDieTest.class);
-
-  final DieUtil mockDieUtil = mock(DieUtil.class);
 
   @Test
   void testWildDieNoWild() {
