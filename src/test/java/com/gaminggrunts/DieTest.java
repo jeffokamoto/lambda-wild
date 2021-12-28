@@ -1,7 +1,6 @@
 package com.gaminggrunts;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -13,7 +12,7 @@ class DieTest {
   private static final Logger logger = LoggerFactory.getLogger(DieTest.class);
 
   @Test
-  void invokeTest() {
+  void testDie() {
     try (MockedStatic<DieUtil> utilities = Mockito.mockStatic(DieUtil.class)) {
       utilities.when(() -> DieUtil.rollDie(4)).thenReturn(6);
       Die die = new Die(4);
