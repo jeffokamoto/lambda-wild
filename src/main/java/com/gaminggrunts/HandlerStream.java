@@ -174,15 +174,15 @@ public class HandlerStream implements RequestStreamHandler {
 
     dieList.stream().forEach(die -> { die.roll(); });
     for (Die die: dieList) {
-      total += die.result;
-      rollStringList.add(die.roll);
+      total += die.getResult();
+      rollStringList.add(die.getRoll());
     }
     rollString = String.join(" ", rollStringList);
 
     if (wildDie != null) {
       wildDie.roll();
-      total += wildDie.result;
-      rollString += " Wild " + wildDie.roll;
+      total += wildDie.getResult();
+      rollString += " Wild " + wildDie.getRoll();
     }
 
     if (modifier != 0) {

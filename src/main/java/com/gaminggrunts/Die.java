@@ -1,9 +1,9 @@
 package com.gaminggrunts;
 
 public class Die {
-    Integer sides;
-    Integer result;
-    String roll;
+    private Integer sides;
+    private Integer result;
+    private String roll;
 
     public Die(final Integer sides) {
         this.sides = sides;
@@ -32,9 +32,9 @@ public class Die {
     }
 
     public void roll() {
-        Integer n = DieUtil.rollDie(this.sides);
-        this.result = n;
-        this.roll = Integer.toString(n);
+        Integer n = DieUtil.rollDie(this.getSides());
+        this.setResult(n);
+        this.setRoll(Integer.toString(n));
     }
 
     @Override
