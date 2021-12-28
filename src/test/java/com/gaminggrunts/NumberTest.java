@@ -25,4 +25,12 @@ public class NumberTest {
         assertEquals(number.getResult(), -2);
         assertEquals(number.toString(), "- 2");
     }
+
+    @Test
+    void testZero() {
+        Number number = new Number(0);
+        number.roll();
+        assertEquals(number.getResult(), 0);
+        assertEquals(number.toString(), "+ 0");
+    }
 }
