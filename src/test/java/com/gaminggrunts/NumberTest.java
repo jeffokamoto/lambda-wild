@@ -14,15 +14,15 @@ public class NumberTest {
     void testNonzero() {
         Number number = new Number(4);
         number.roll();
-        assertEquals(number.getResult(), 4);
-        assertEquals(number.toString(), "4");
+        assertEquals(4, number.getResult());
+        assertEquals("4", number.toString());
     }
 
     @Test
     void testZero() {
         Number number = new Number(0);
         number.roll();
-        assertEquals(number.getResult(), 0);
-        assertEquals(number.toString(), "0");
+        assertEquals(0, number.getResult());
+        assertEquals("0", number.toString());
     }
 }

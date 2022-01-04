@@ -17,8 +17,8 @@ class DieTest {
       utilities.when(() -> DieUtil.rollDie(4)).thenReturn(6);
       Die die = new Die(4);
       die.roll();
-      assertEquals(die.getResult(), 6);
-      assertEquals(die.toString(), "6");
+      assertEquals(6, die.getResult());
+      assertEquals("6", die.toString());
     }
   }
 

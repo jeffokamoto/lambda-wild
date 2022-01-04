@@ -20,8 +20,8 @@ class GroupTest {
         .addDie(new Die(6))
         .addDie(new Die(6));
       group.calculate();
-      assertEquals(group.getResult(), 13);
-      assertEquals(group.toString(), "+ 6 4 3");
+      assertEquals(13, group.getResult());
+      assertEquals("+ 6 4 3", group.toString());
     }
   }
 
@@ -34,8 +34,8 @@ class GroupTest {
           .addDie(new Die(6))
           .addDie(new Die(6));
       group.calculate();
-      assertEquals(group.getResult(), -8);
-      assertEquals(group.toString(), "- 5 2 1");
+      assertEquals(-8, group.getResult());
+      assertEquals("- 5 2 1", group.toString());
     }
   }
 }
