@@ -11,19 +11,11 @@ public class NumberTest {
     private static final Logger logger = LoggerFactory.getLogger(com.gaminggrunts.NumberTest.class);
 
     @Test
-    void testPositiveNumber() {
+    void testNonzero() {
         Number number = new Number(4);
         number.roll();
         assertEquals(number.getResult(), 4);
-        assertEquals(number.toString(), "+ 4");
-    }
-
-    @Test
-    void testNegativeNumber() {
-        Number number = new Number(-2);
-        number.roll();
-        assertEquals(number.getResult(), -2);
-        assertEquals(number.toString(), "- 2");
+        assertEquals(number.toString(), "4");
     }
 
     @Test
@@ -31,6 +23,6 @@ public class NumberTest {
         Number number = new Number(0);
         number.roll();
         assertEquals(number.getResult(), 0);
-        assertEquals(number.toString(), "+ 0");
+        assertEquals(number.toString(), "0");
     }
 }

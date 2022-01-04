@@ -9,11 +9,7 @@ public class Number extends Die {
     @Override
     public void roll() {
         this.setResult(this.getSides());
-        if (this.getSides() < 0) {
-            this.setRoll("- " + Integer.toString(-this.getSides()));
-        } else {
-            this.setRoll("+ " + Integer.toString(this.getSides()));
-        }
+        this.setRoll(Integer.toString(this.getSides()));
     }
 
     @Override

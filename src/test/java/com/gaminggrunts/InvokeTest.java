@@ -1,6 +1,8 @@
 package com.gaminggrunts;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.amazonaws.services.lambda.runtime.Context;
@@ -10,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 
+@Disabled
 class InvokeTest {
   private static final Logger logger = LoggerFactory.getLogger(InvokeTest.class);
 
