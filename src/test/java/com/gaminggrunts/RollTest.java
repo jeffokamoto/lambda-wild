@@ -22,8 +22,8 @@ class RollTest {
       Roll roll = new Roll();
       roll.add(group);
       roll.calculate();
-      assertEquals(roll.getResult(), 13);
-      assertEquals(roll.getRollResult(), "6 4 3");
+      assertEquals(13, roll.getResult());
+      assertEquals("6 4 3", roll.getRollResult());
     }
   }
 
@@ -38,8 +38,8 @@ class RollTest {
       Roll roll = new Roll();
       roll.add(group);
       roll.calculate();
-      assertEquals(roll.getResult(), -8);
-      assertEquals(roll.getRollResult(), "- 5 2 1");
+      assertEquals(-8, roll.getResult());
+      assertEquals("- 5 2 1", roll.getRollResult());
     }
   }
 
@@ -57,8 +57,8 @@ class RollTest {
       group2.addDie(new Number(1));
       roll.add(group2);
       roll.calculate();
-      assertEquals(roll.getResult(), 14);
-      assertEquals(roll.getRollResult(), "6 4 3 + 1");
+      assertEquals(14, roll.getResult());
+      assertEquals("6 4 3 + 1", roll.getRollResult());
     }
   }
 
@@ -76,8 +76,8 @@ class RollTest {
       group2.addDie(new Number(2));
       roll.add(group2);
       roll.calculate();
-      assertEquals(roll.getResult(), -10);
-      assertEquals(roll.getRollResult(), "- 5 2 1 - 2");
+      assertEquals(-10, roll.getResult());
+      assertEquals("- 5 2 1 - 2", roll.getRollResult());
     }
   }
 

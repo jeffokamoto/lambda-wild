@@ -17,8 +17,8 @@ class WildDieTest {
       utilities.when(() -> DieUtil.rollDie(6)).thenReturn(1);
       WildDie wildDie = new WildDie(6);
       wildDie.roll();
-      assertEquals(wildDie.getResult(), 1);
-      assertEquals(wildDie.toString(), "(1)");
+      assertEquals(1, wildDie.getResult());
+      assertEquals("(1)", wildDie.toString());
     }
   }
 
@@ -28,8 +28,8 @@ class WildDieTest {
       utilities.when(() -> DieUtil.rollDie(6)).thenReturn(6).thenReturn(6).thenReturn(4);
       WildDie wildDie = new WildDie(6);
       wildDie.roll();
-      assertEquals(wildDie.getResult(), 16);
-      assertEquals(wildDie.toString(), "(6 6 4)");
+      assertEquals(16, wildDie.getResult());
+      assertEquals("(6 6 4)", wildDie.toString());
     }
   }
 
