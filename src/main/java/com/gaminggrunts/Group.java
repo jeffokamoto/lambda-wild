@@ -56,6 +56,10 @@ public class Group {
         return this.plusminus;
     }
 
+    public List<Die> getDieList() {
+        return this.dieList;
+    }
+
     public void calculate() {
         int total = 0;
         ArrayList<String> list = new ArrayList<>();
