@@ -38,6 +38,10 @@ public class Roll {
         return this;
     }
 
+    public List<Group> getGroupList() {
+        return this.groupList;
+    }
+
     public void calculate() {
         for (int i = 0; i < groupList.size(); i++) {
             Group group = groupList.get(i);
