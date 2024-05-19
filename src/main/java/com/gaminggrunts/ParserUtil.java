@@ -35,6 +35,7 @@ public class ParserUtil {
         // Walk it
         walker.walk(listener, commandContext);
 
+        roll.calculate(); // Roll the dice and generate the result
         return roll;
     }
 

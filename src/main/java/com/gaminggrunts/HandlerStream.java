@@ -94,105 +94,16 @@ public class HandlerStream implements RequestStreamHandler {
   }
 
   public String handleText(final LambdaLogger logger, final String spec) {
-    Map<String, Integer> parsed = parseSpec(spec);
-    if (null == parsed) {
-      logger.log("Empty spec passed in, ignoring");
-    }
-    Map<String, String> rollResults = rollDiceWithModifier(parsed);
-    if (null == rollResults) {
-      logger.log("Error when rolling " + spec);
-    }
+    Roll roll = ParserUtil.runParser(spec);
+
     String rv = "Die Roll for " +
-                       spec +
-                       ": " +
-                       rollResults.get(ROLL_STRING) +
-                       "\nTotal is " +
-                       rollResults.get(TOTAL) +
-                       "\n";
-    return rv;
-  }
-  public static Map<String, Integer> parseSpec(final String specArg) {
-    String spec = specArg.replaceAll("\\s+", "");
-
-    String pattern = "^(\\d*)[D|d](\\d+)([+|-]\\d+)?";
-    Pattern r = Pattern.compile(pattern);
-
-    Matcher m = r.matcher(spec);
-    if (!m.find()) {
-      return Collections.emptyMap();
-    }
-
-    int numDice;
-    if (m.group(1).isEmpty()) {
-      numDice = 1;
-    } else {
-      numDice = Integer.parseInt(m.group(1));
-    }
-
-    int diceSize;
-    if (null == m.group(2) || m.group(2).isEmpty()) {
-      diceSize = 1;   // Throw error
-    } else {
-      diceSize = Integer.parseInt(m.group(2));
-    }
-
-    int modifier;
-    if (null == m.group(3) || m.group(3).isEmpty()) {
-      modifier = 0;
-    } else {
-      modifier = Integer.parseInt(m.group(3));
-    }
-
-    Map<String, Integer> rv = new HashMap<>();
-    rv.put(NUM_DICE, numDice);
-    rv.put(DICE_SIZE, diceSize);
-    rv.put(MODIFIER, modifier);
+            spec +
+            ": " +
+            roll.getRollResult() +
+            "\nTotal is " +
+            roll.getResult() +
+            "\n";
 
     return rv;
   }
-
-  public static Map<String, String> rollDiceWithModifier(final Map<String, Integer> args) {
-    int numDice = args.get(NUM_DICE);
-    int diceSize = args.get(DICE_SIZE);
-    int modifier = args.get(MODIFIER);
-    List<Die> dieList = new ArrayList<>();
-    WildDie wildDie = null;
-    Map<String, String> rv = new HashMap<>();
-    Integer total = 0;
-    String rollString = "";
-    List<String> rollStringList = new ArrayList<>();
-
-    if (numDice > 1) {
-      wildDie = new WildDie(diceSize);
-      numDice--;
-    }
-
-    IntStream.range(0, numDice).forEach(i -> {
-      dieList.add(new Die(diceSize));
-    });
-
-
-    dieList.stream().forEach(die -> { die.roll(); });
-    for (Die die: dieList) {
-      total += die.getResult();
-      rollStringList.add(die.getRoll());
-    }
-    rollString = String.join(" ", rollStringList);
-
-    if (wildDie != null) {
-      wildDie.roll();
-      total += wildDie.getResult();
-      rollString += " Wild " + wildDie.getRoll();
-    }
-
-    if (modifier != 0) {
-      total += modifier;
-      rollString += ((modifier > 0) ? " + " : " - ") + Integer.toString(modifier);
-    }
-
-    rv.put(TOTAL, Integer.toString(total));
-    rv.put(ROLL_STRING, rollString);
-    return rv;
-  }
-
 }
