@@ -54,6 +54,12 @@ public class DiceListener extends RollerDieBaseListener {
         // Do we have a dice spec (e.g., 3d6)?
         if (null != dieSpecContext) {
             List<RollerDieParser.NumContext> numContextList = dieSpecContext.num();
+            /*
+             * If there are two numbers in the dieSpec context, then we have an explicit
+             * number of dice specified (e.g., 3D6, 1D12). If there is only one number,
+             * then it's something like D8 or D4, and thus implicitly there is only one
+             * of those die types.
+             */
             switch (numContextList.size()) {
                 case 1:
                     numDice = 1;
@@ -76,6 +82,7 @@ public class DiceListener extends RollerDieBaseListener {
             RollerDieParser.DieContext dieContext = typeCtx.die();
             RollerDieParser.WildContext wildContext = typeCtx.wild();
 
+            // Store the modifier in the Group
             Group group = new Group(modifier);
             Integer finalDieSize = dieSize;
             if (null != dieContext) {
@@ -88,7 +95,7 @@ public class DiceListener extends RollerDieBaseListener {
 
             roll.add(group);
 
-            // Or just a modifier (e.g., 1)?
+        // Or just a number with the modifier (e.g., 1)?
         } else {
             RollerDieParser.NumContext numContext = termCtx.num();
             Group group = new Group(modifier);
