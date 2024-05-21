@@ -9,8 +9,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gdata.util.common.net.UriParameterMap;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.io.InputStream;
 import java.io.IOException;
@@ -22,12 +20,7 @@ import java.io.PrintWriter;
 import java.io.BufferedWriter;
 import java.nio.charset.Charset;
 import java.lang.IllegalStateException;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.IntStream;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -91,6 +84,12 @@ public class HandlerStream implements RequestStreamHandler {
       reader.close();
       writer.close();
     }
+  }
+
+  public String handleRequest(String spec, Context context) throws IOException
+  {
+    LambdaLogger logger = context.getLogger();
+    return handleText(logger, spec);
   }
 
   public String handleText(final LambdaLogger logger, final String spec) {

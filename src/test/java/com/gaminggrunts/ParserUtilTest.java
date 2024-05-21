@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ParserUtilTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(com.gaminggrunts.NumberTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(com.gaminggrunts.ParserUtil.class);
 
     @Test
     void testEmptyString() {
