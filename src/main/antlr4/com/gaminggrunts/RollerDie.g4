@@ -2,6 +2,7 @@ grammar RollerDie;
 
 // Parser
 
+// Can't start with a leading '-' (nor a '+')
 command :
     noModifierTerm ( dieList+=modifierTerm )* # DiceCommand
     ;
@@ -12,9 +13,11 @@ modifierTerm :
 noModifierTerm :
     ( dieSpec | num ) ;
 
+// Allow both "D<m>" and "<n>D<m>"
 dieSpec :
     num? dieType num ;
 
+// Add additional die types here
 dieType :
     ( die | wild ) ;
 
@@ -22,7 +25,6 @@ wild : WILD ;
 die : DIE ;
 num : NUM ;
 mod : MOD ;
-// dieSize : NUM ;
 
 // Lexer
 
