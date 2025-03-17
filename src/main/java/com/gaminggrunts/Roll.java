@@ -16,7 +16,7 @@ public class Roll {
     }
 
     public int getResult() {
-        return this.result;
+        return result;
     }
 
     public Roll setResult(final int result) {
@@ -25,7 +25,7 @@ public class Roll {
     }
 
     public String getRollResult() {
-        return this.rollResult;
+        return rollResult;
     }
 
     public Roll setRollResult(final String rollResult) {
@@ -34,12 +34,12 @@ public class Roll {
     }
 
     public Roll add(final Group group) {
-        this.groupList.add(group);
+        groupList.add(group);
         return this;
     }
 
     public List<Group> getGroupList() {
-        return this.groupList;
+        return groupList;
     }
 
     public void calculate() {
@@ -53,13 +53,13 @@ public class Roll {
             } else {
                 resultText = " " + resultText;
             }
-            this.setResult(this.getResult() + group.getResult());
-            this.setRollResult(this.getRollResult() + resultText);
+            setResult(getResult() + group.getResult());
+            setRollResult(getRollResult() + resultText);
         }
     }
 
     @Override
     public String toString() {
-        return this.rollResult;
+        return rollResult;
     }
 }

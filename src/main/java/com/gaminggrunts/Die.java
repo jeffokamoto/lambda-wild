@@ -7,18 +7,20 @@ public class Die {
 
     public Die(final Integer sides) {
         this.sides = sides;
+        this.result = 0;
+        this.roll = "";
     }
 
     public Integer getSides() {
-        return this.sides;
+        return sides;
     }
 
     public Integer getResult() {
-        return this.result;
+        return result;
     }
 
     public String getRoll() {
-        return this.roll;
+        return roll;
     }
 
     public Die setResult(final Integer arg) {
@@ -32,13 +34,13 @@ public class Die {
     }
 
     public void roll() {
-        Integer n = DieUtil.rollDie(this.getSides());
-        this.setResult(n);
-        this.setRoll(Integer.toString(n));
+        Integer n = DieUtil.rollDie(getSides());
+        setResult(n);
+        setRoll(Integer.toString(n));
     }
 
     @Override
     public String toString() {
-        return this.roll;
+        return roll;
     }
 }
