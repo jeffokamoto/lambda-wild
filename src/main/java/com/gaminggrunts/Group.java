@@ -11,10 +11,7 @@ public class Group {
     private String text;
 
     public Group() {
-        this.dieList = new ArrayList<>();
-        this.plusminus = 1;
-        this.result = 0;
-        this.text = "";
+        this(1);
     }
 
     public Group(final int modifier) {
@@ -35,7 +32,7 @@ public class Group {
     }
 
     public int getResult() {
-        return this.result;
+        return result;
     }
 
     public Group setResult(final int result) {
@@ -44,7 +41,7 @@ public class Group {
     }
 
     public String getText() {
-        return this.text;
+        return text;
     }
 
     public Group setText(final String text) {
@@ -53,11 +50,11 @@ public class Group {
     }
 
     public int getPlusminus() {
-        return this.plusminus;
+        return plusminus;
     }
 
     public List<Die> getDieList() {
-        return this.dieList;
+        return dieList;
     }
 
     public void calculate() {
@@ -68,14 +65,14 @@ public class Group {
             total += die.getResult();
             list.add(die.getRoll());
         }
-        total *= this.plusminus;
-        this.setResult(total);
-        this.setText((this.getPlusminus() == 1 ? "+ " : "- ") + String.join(" ", list));
+        total *= plusminus;
+        setResult(total);
+        setText((getPlusminus() == 1 ? "+ " : "- ") + String.join(" ", list));
     }
 
     @Override
     public String toString() {
-        return this.text;
+        return text;
     }
 
 }
